@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Athiti:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  font-family: 'Athiti', sans-serif;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+/* MAIN */
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 80vh;
+}
+
+.main-content {
+  flex: 1;
+  margin: 2vh 5vw 0 5vw;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #e63946;
+  font-size: 1.8rem;
+}
+
+.text {
+  text-align: center;
+  color: #e63946;
+  font-size: 1.2rem;
+}
+
+.main-image {
+  flex: 1;
+  margin-top: 20px;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Media Queries for Responsiveness */
+@media only screen and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .main-content {
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .text {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .main-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
