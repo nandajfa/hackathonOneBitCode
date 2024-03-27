@@ -33,24 +33,24 @@ function Dashboard() {
         <Sider style={menuStyle}>
           <Menu mode="inline" defaultSelectedKeys={['1']} style={menuStyle}>
             <Menu.Item key="1" icon={<PlusOutlined />} style={menuItemStyle}>
-              Adicionar Serviço
+            <span>Adicionar Serviço</span>
             </Menu.Item>
             <Menu.Item key="2" icon={<EditOutlined />} style={menuItemStyle}>
-              Editar Serviço
+            <span>Editar Serviço</span>
             </Menu.Item>
             <Menu.Item
               key="3"
               icon={<CalendarOutlined />}
               style={menuItemStyle}
             >
-              Definir Disponibilidade
+              <span>Definir Disponibilidade</span>
             </Menu.Item>
             <Menu.Item
               key="4"
               icon={<ScheduleOutlined />}
               style={menuItemStyle}
             >
-              Gestão de Agendamentos
+              <span>Gestão de Agendamentos</span>
             </Menu.Item>
             <Menu.Item
               key="5"
@@ -58,7 +58,7 @@ function Dashboard() {
               style={menuItemStyle}
               onClick={handleLogout}
             >
-              Sair
+              <span>Sair</span>
             </Menu.Item>
           </Menu>
         </Sider>

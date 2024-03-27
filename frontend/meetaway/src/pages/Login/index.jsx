@@ -72,24 +72,34 @@ const Login = () => {
             {({ isSubmitting }) => (
               <Form>
                 <div className="user-box">
-                  <label>Email</label>
-                  <Field type="email" name="email" />
+                  <label htmlFor='email'>Email</label>
+                  <Field type="email"
+              name="email"
+              id="email"
+              aria-describedby="email-error"
+              aria-invalid={isSubmitting}
+              aria-required="true" />
                   <ErrorMessage
                     name="email"
                     component="span"
                     className="error"
+                    id="email-error"
                   />
                 </div>
                 <div className="user-box">
-                  <label>Senha</label>
-                  <Field type="password" name="password" />
+                  <label htmlFor="password">Senha</label>
+                  <Field type="password" name="password" id="password"  aria-describedby="password-error"
+              aria-invalid={isSubmitting}
+              aria-required="true"/>
                   <ErrorMessage
                     name="password"
                     component="span"
                     className="error"
+                    id="password-error"
                   />
                 </div>
-                <button type="submit" disabled={isSubmitting}>
+                <button type="submit" disabled={isSubmitting}          aria-busy={isSubmitting}
+                  aria-label={isSubmitting ? 'Enviando...' : 'Logar'}>
                   <span></span>
                   <span></span>
                   <span></span>
