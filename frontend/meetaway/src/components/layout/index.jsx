@@ -1,24 +1,58 @@
-import React from 'react'
-import { Layout, Menu } from 'antd'
+import React, { useEffect } from 'react'
+import { Layout, Menu, Modal } from 'antd'
 import { logout } from '../../services/auth'
 import { useNavigate } from 'react-router-dom'
+import { isTokenExpired } from '../../utils/jwt-decode'
+import FailureNotification from '../Notification/FailureNotification'
+import SuccessNotification from '../Notification/SuccessNotification'
 import {
   CalendarOutlined,
   ScheduleOutlined,
   PlusOutlined,
   EditOutlined,
-  LogoutOutlined
+  LogoutOutlined,
+  PoweroffOutlined
 } from '@ant-design/icons'
+
 
 const { Sider, Content } = Layout
 
 function Dashboard() {
+  const { confirm } = Modal;
+  
+  useEffect(() => {
+    if (isTokenExpired()) {
+      FailureNotification({
+        message: 'Sessão encerrada',
+        description: 'Por favor, faça login novamente.',
+      });
+      logout();
+    }
+  }, []);
+  
   const navigate = useNavigate()
-
+  
   const handleLogout = async () => {
+    confirm({
+      title: 'Confirmar saída da conta',
+      icon: <PoweroffOutlined />,
+      content:
+        'Tem certeza de que deseja sair da sua conta? Ao sair, você será desconectado e precisará fazer login novamente para acessar sua conta.',
+      okText: 'Confirmar',
+      cancelText: 'Cancelar',
+      onOk: () => onLogout(),
+      onCancel: () => Modal.destroyAll(),
+    });
+  }
+
+  const onLogout = () => {
+    SuccessNotification({
+      message: 'Sessão encerrada',
+      description: 'A sua sessão foi encerrada.',
+    });
     logout()
     navigate('/')
-  }
+  };
 
   const menuStyle = {
     background: '#457b9d'
