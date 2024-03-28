@@ -109,14 +109,14 @@ const Register = () => {
                   />
                 </div>
                 <button type="submit" disabled={isSubmitting} 
-                aria-busy={isSubmitting}
-            aria-label={isSubmitting ? 'Enviando...' : 'Enviar'>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  {isSubmitting ? 'Enviando...' : 'Enviar'}
-                </button>
+        aria-busy={isSubmitting}
+        aria-label={isSubmitting ? 'Enviando...' : 'Enviar'}>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  {isSubmitting ? 'Enviando...' : 'Enviar'}
+</button>
               </Form>
             )}
           </Formik>
