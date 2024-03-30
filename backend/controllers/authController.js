@@ -1,6 +1,6 @@
 const { registerUser, loginUser } = require('../services/authServices');
 
-exports.registerUserController = async (req, res) => {
+exports.registerUserController = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
     const result = await registerUser(name, email, password);
@@ -11,7 +11,7 @@ exports.registerUserController = async (req, res) => {
   }
 };
 
-exports.loginUserController = async (req, res) => {
+exports.loginUserController = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const result = await loginUser(email, password);

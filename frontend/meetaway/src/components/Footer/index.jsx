@@ -2,7 +2,6 @@ import React from 'react'
 import './style.css'
 import meetaway from '../../assets/logo2.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCopyright } from '@fortawesome/free-solid-svg-icons'
 import {
   faInstagram,
   faLinkedin,
@@ -45,7 +44,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="rights" role="contentinfo" aria-label="Direitos reservados">
-        Todos os direitos reservados <FontAwesomeIcon icon={faCopyright} />
+        Todos os direitos reservados ©{new Date().getFullYear()}
       </p>
     </footer>
   )

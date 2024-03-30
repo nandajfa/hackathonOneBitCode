@@ -57,7 +57,7 @@ const Login = () => {
   }
 
   return redirectHome ? (
-    <Navigate to="/dash" replace />
+    <Navigate to="/menu" replace />
   ) : (
     <>
       <Header />

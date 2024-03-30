@@ -68,6 +68,7 @@ const Register = () => {
                   <Field type="text"
               name="name"
               id="name"
+              className="description"
               aria-describedby="name-error"
               aria-invalid={isSubmitting}
               aria-required="true" />

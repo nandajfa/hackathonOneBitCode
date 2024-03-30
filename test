@@ -1,0 +1,49 @@
+      <Layout style={{ minHeight: '100vh' }}>
+        <Sider style={menuStyle}>
+          <Menu mode="inline" defaultSelectedKeys={['1']} style={menuStyle}>
+        <Menu.Item key="1" icon={<EditOutlined />} style={menuItemStyle}>
+            <span>Home</span>
+            </Menu.Item>
+            <Menu.Item key="2" icon={<PlusOutlined />} style={menuItemStyle}>
+              <span>Adicionar Serviço</span>
+            
+            </Menu.Item>
+            <Menu.Item key="3" icon={<EditOutlined />} style={menuItemStyle}>
+            <span>Editar Serviço</span>
+            </Menu.Item>
+            <Menu.Item
+              key="4"
+              icon={<CalendarOutlined />}
+              style={menuItemStyle}
+            >
+              <span>Definir Disponibilidade</span>
+            </Menu.Item>
+            <Menu.Item
+              key="5"
+              icon={<ScheduleOutlined />}
+              style={menuItemStyle}
+            >
+              <span>Gestão de Agendamentos</span>
+            </Menu.Item>
+            <Menu.Item
+              key="6"
+              icon={<LogoutOutlined />}
+              style={menuItemStyle}
+              onClick={handleLogout}
+            >
+              <span>Sair</span>
+            </Menu.Item>
+          </Menu>
+        </Sider>
+        <Layout>
+          <Content style={{ margin: '16px' }}>
+            <div style={{ padding: 24, minHeight: 360 }}>
+            <Routes>
+              <Route exact path="/home" element={<Home />} />
+              <Route path="/services" element={<ServiceForm />} />
+              {/* Adicione outras rotas conforme necessário */}
+              </Routes>
+            </div>
+          </Content>
+        </Layout>
+      </Layout>

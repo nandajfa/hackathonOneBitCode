@@ -5,6 +5,7 @@ import Register from '../pages/Register'
 import Schedule from '../pages/Schedule'
 import { PrivateRoute } from './privateRoute'
 import Dashboard from '../components/layout'
+import ServiceForm from '../components/servicesForm'
 
 const AppRoutes = () => {
   return (
@@ -16,10 +17,42 @@ const AppRoutes = () => {
         <Route path="/schedule" element={<Schedule />} />
         <Route path="*" element={<Login />} />
         <Route
-          path="/dash"
+          path="/menu"
           element={
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/services"
+          element={
+            <PrivateRoute>
+              <ServiceForm />
+            </PrivateRoute>
+          }
+        />
+                <Route
+          path="/edit-services"
+          element={
+            <PrivateRoute>
+              <ServiceForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/availability"
+          element={
+            <PrivateRoute>
+              <ServiceForm />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/manager"
+          element={
+            <PrivateRoute>
+              <ServiceForm />
             </PrivateRoute>
           }
         />
