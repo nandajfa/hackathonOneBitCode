@@ -4,8 +4,9 @@ import * as Yup from 'yup'
 import './style.css'
 import HeaderPrivate from '../HeaderPrivate'
 import Footer from '../Footer'
-// import FailureNotification from '../../components/Notification/FailureNotification'
+import FailureNotification from '../../components/Notification/FailureNotification'
 import SuccessNotification from '../../components/Notification/FailureNotification'
+import axios from 'axios'
 
 const ServiceForm = () => {
         const validationSchema = Yup.object().shape({
@@ -17,11 +18,26 @@ const ServiceForm = () => {
         })
 
         const handleSubmit = async (values, {setSubmitting}) => {
-          SuccessNotification({
-            message: 'Adicionado com sucesso',
-            description: 'Seu serviço foi adicionado.'
-          })
-          setSubmitting(false)}
+          try {
+            const response = await axios.post(
+              'http://localhost:3003/services/',
+              values
+            )
+            if (response.status === 201) {
+                SuccessNotification({
+                  message: 'Adicionado com sucesso',
+                  description: 'Seu serviço foi adicionado.'
+                })
+              }
+            setSubmitting(false)
+          } catch (error) {
+            FailureNotification({
+              message: 'Erro ao adicionar serviço',
+              description: 'Tente novamente mais tarde.'
+            })
+            setSubmitting(false)
+          }
+         }
     
     return (
         <>
