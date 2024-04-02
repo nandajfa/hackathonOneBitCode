@@ -11,9 +11,9 @@ app.use(express.json())
 
 const PORT = process.env.PORT || 3003
 
-const supabaseUrl = 'https://tmbttestdvsuoceefjqw.supabase.co'
-const supabaseKey =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRtYnR0ZXN0ZHZzdW9jZWVmanF3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxMTIzMjExMywiZXhwIjoyMDI2ODA4MTEzfQ.Rl62WskqOKmLcuup5q-Lgb7sSR9n_RwHyOcZRwO9rJc'
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
+
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 const generateRandomString = length => {

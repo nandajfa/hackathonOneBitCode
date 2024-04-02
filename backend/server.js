@@ -2,6 +2,7 @@ const express = require('express');
 const corsMiddleware = require('./middlewares/corsMiddleware');
 const errorHandler = require('./middlewares/errorMiddleware');
 const Routes = require('./routes/Routes');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3003;
