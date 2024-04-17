@@ -2,10 +2,10 @@ import React from 'react'
 
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
-import './style.css'
 import Price from '../../components/Price'
 import About from '../../components/About'
 import Benefits from '../../components/Benefits'
+import './style.css'
 
 const Home = () => {
   return (
