@@ -22,10 +22,10 @@ const Header = () => {
         onClick={toggleMenu}
       >
         <a
-          href="/"
+          href="#main"
           className="nav-link"
           aria-label="Section Main"
-          aria-current={currentPage === '/' ? 'page' : null}
+          aria-current={currentPage === '#main' ? 'page' : null}
         >
           HOME
         </a>
