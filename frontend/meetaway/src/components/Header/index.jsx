@@ -1,46 +1,63 @@
-import React from 'react'
-import logo from '../../assets/smallLogo.png'
+import React, { useState } from 'react'
 import './style.css'
-import { Link } from 'react-router-dom'
 
 const Header = () => {
+  const currentPage = window.location.pathname
+  const [menuIsVisible, setMenuIsVisible] = useState(false)
+  const toggleMenu = () => {
+    setMenuIsVisible(!menuIsVisible)
+  }
   return (
-    <header className="header" aria-label="Cabeçalho de navegação">
-      <div className="logo-container">
-        <img src={logo} alt="Logo meetaway" className="logo" />
+    <header className="header" aria-label="Navigation header">
+      <div class="logo-text" aria-label="Logo text meetaway">
+        meetaway
       </div>
-      <nav className="nav" aria-label="Navegação principal">
-        <Link
-          to="/"
+
+      <nav
+        role="navigation"
+        className={`nav-menu ${menuIsVisible ? 'show' : ''}`}
+        aria-label="main menu"
+      >
+        <a
+          href="/"
+          aria-current={currentPage === '/' ? 'page' : null}
           className="nav-link"
-          aria-current={window.location.pathname === '/' ? 'page' : null}
         >
-          Home
-        </Link>
-        <Link
-          to="/login"
+          HOME
+        </a>
+        <a
+          href="#about"
+          aria-current={currentPage === '#about' ? 'page' : null}
           className="nav-link"
-          aria-current={window.location.pathname === '/login' ? 'page' : null}
         >
-          Fazer login
-        </Link>
-        <Link
-          to="/register"
+          about
+        </a>
+        <a
+          href="#benefits"
+          aria-current={currentPage === '#benefits' ? 'page' : null}
           className="nav-link"
-          aria-current={window.location.pathname === '/signUp' ? 'page' : null}
         >
-          Registrar
-        </Link>
-        <Link
-          to="/schedule"
+          benefits
+        </a>
+        <a
+          href="#price"
+          aria-current={currentPage === '#price' ? 'page' : null}
           className="nav-link"
-          aria-current={
-            window.location.pathname === '/schedule' ? 'page' : null
-          }
         >
-          Agendar
-        </Link>
+          Price
+        </a>
+        <a href="/schedules" className="nav-link">
+          SCHEDULES
+        </a>
       </nav>
+      <a href="/sign-up" className="nav-link right" aria-label="Sign-up">
+        SIGN UP
+      </a>
+      <button class="menu-icon" aria-label="Menu sandwich" onClick={toggleMenu}>
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
     </header>
   )
 }

@@ -1,68 +1,114 @@
 /* HEADER */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
 .header {
+  background-color: #2c2f30;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
-  background-color: #457b9d;
+  gap: 40px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
-.logo-container {
-  justify-content: center;
+.menu-icon {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.logo {
-  max-width: 200px;
+.line {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px;
+  transition: transform 0.3s ease;
 }
 
-.nav {
-  display: flex;
-  gap: 2vh;
-  justify-content: center;
+.menu-open .line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-open .line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-open .line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.logo-text {
+  color: #fff;
+  letter-spacing: 2px;
+  padding-bottom: 2px;
+  font-size: 2rem;
+  font-weight: 500;
+  transition: border-color 0.2s;
+  font-family: 'Caveat', cursive;
+  border-bottom: 3px solid #5f6266;
+}
+
+.logo-text:hover {
+  border-bottom-color: #4c709e;
 }
 
 .nav-link {
-  text-decoration: none;
   color: #fff;
-  font-size: 1.2rem;
-  position: relative;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 20px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.2s;
 }
 
-.nav-link::after {
-  content: '';
-  width: 0px;
-  height: 0px;
-  display: block;
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-bottom: 4px solid transparent;
-  transition: width 0.9s;
+.nav-link:hover {
+  color: #fff;
+  background-color: #5f6266;
 }
 
-.nav-link:hover::after {
-  width: 100%;
-  border-bottom: 4px solid #e63946;
+.nav-link.w--current {
+  color: #fff;
+  background-color: #3f4345;
 }
 
-/* Media Queries for Responsiveness */
-@media only screen and (max-width: 768px) {
-  .header {
-    display: flex;
-    align-items: center;
-    text-align: center;
-  }
+.nav-link.right {
+  border: 1px solid #5f6266;
+  border-radius: 2px;
+  margin-top: 16px;
+  margin-bottom: 18px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
 
-  .logo {
+/* Media Queries  */
+@media only screen and (max-width: 912px) {
+  .nav-menu {
     display: none;
   }
 
-  .nav {
-    flex: 1;
+  .menu-icon {
+    display: block;
+    bottom: 18px;
   }
 
-  .nav-link {
-    font-size: 1rem;
+  .show {
+    display: flex;
+    width: 50%;
+    height: auto;
+    position: absolute;
+    top: 90px;
+    right: 0;
+    background-color: #2c2f30;
+    flex-direction: column;
+  }
+
+  .nav-link.right {
+    display: none;
   }
 }
