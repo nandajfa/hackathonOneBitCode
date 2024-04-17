@@ -1,0 +1,121 @@
+.sec-price {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  color: #f2f4f7;
+  width: 80%;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+.title-price {
+  text-align: left;
+  margin-top: 60px;
+  margin-bottom: 50px;
+}
+
+.pricing-column {
+  background-color: #2c2f30;
+}
+
+.pricing-row {
+  display: flex;
+  justify-content: center;
+  color: #d7d9de;
+  gap: 20px;
+}
+
+.plan-title {
+  text-align: center;
+  border-bottom: 3px solid rgba(218, 0224, 0232, 0);
+  padding: 25px 15px;
+  font-size: 1.312rem;
+  text-transform: uppercase;
+}
+
+.plan-title.basic {
+  background-color: rgba(215, 217, 222, 0.09);
+  border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+.price {
+  text-align: center;
+  margint-top: 36px;
+  margin-bottom: 13px;
+  font-family: 'Roboto', 'san-serif';
+  font-size: 2.625rem;
+  font-weight: 300;
+  line-height: 41px;
+  margin-top: 30px;
+}
+
+.per-month {
+  color: #6f7378;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  fonts-size: 1rem;
+}
+
+.price-feature {
+  text-align: center;
+  padding: 10px 19px;
+  font-size: 1rem;
+}
+
+.price-feature.deactivate {
+  color: rgba(215, 217, 222, 0.7);
+  text-decoration: line-through;
+}
+
+.get-started-link {
+  color: #0bd685;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 45px;
+  margin-bottom: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.5s;
+  display: inline-block;
+  font-size: 0.8rem;
+}
+
+.get-started-link:hover {
+  color: #fff;
+}
+
+.get-started-link.pricing {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  display: block;
+}
+
+.support {
+  margin-top: 40px;
+  margin-bottom: 80px;
+  text-align: right;
+}
+
+/* Media Queries for Responsiveness */
+@media only screen and (max-width: 768px) {
+  .pricing-row {
+    flex-direction: column;
+  }
+
+  .get-started-link {
+    margin-top: 30px;
+  }
+
+  .support {
+    text-align: center;
+  }
+}
