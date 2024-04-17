@@ -4,7 +4,7 @@ import './style.css'
 const Price = () => {
   return (
     <section id="sec-price" className="sec-price">
-      <div className="container">
+      <div className="container-price">
         <div className="title-price">
           <h2>Our pricing is simple</h2>
           <p>No commitments. No credit cards required. Start now!</p>

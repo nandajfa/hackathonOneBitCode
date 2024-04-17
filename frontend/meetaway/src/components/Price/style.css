@@ -4,7 +4,7 @@
   justify-content: center;
 }
 
-.container {
+.container-price {
   color: #f2f4f7;
   width: 80%;
   height: 100%;
@@ -16,6 +16,7 @@
 h2 {
   margin-bottom: 15px;
 }
+
 .title-price {
   text-align: left;
   margin-top: 60px;
