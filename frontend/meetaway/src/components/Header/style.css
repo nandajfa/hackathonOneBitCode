@@ -30,18 +30,6 @@
   transition: transform 0.3s ease;
 }
 
-.menu-open .line:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.menu-open .line:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-open .line:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
 .logo-text {
   color: #fff;
   letter-spacing: 2px;

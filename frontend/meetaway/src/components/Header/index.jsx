@@ -4,9 +4,11 @@ import './style.css'
 const Header = () => {
   const currentPage = window.location.pathname
   const [menuIsVisible, setMenuIsVisible] = useState(false)
+
   const toggleMenu = () => {
     setMenuIsVisible(!menuIsVisible)
   }
+
   return (
     <header className="header" aria-label="Navigation header">
       <div class="logo-text" aria-label="Logo text meetaway">
@@ -17,46 +19,65 @@ const Header = () => {
         role="navigation"
         className={`nav-menu ${menuIsVisible ? 'show' : ''}`}
         aria-label="main menu"
+        onClick={toggleMenu}
       >
         <a
           href="/"
-          aria-current={currentPage === '/' ? 'page' : null}
           className="nav-link"
+          aria-label="Section Main"
+          aria-current={currentPage === '/' ? 'page' : null}
         >
           HOME
         </a>
         <a
           href="#about"
-          aria-current={currentPage === '#about' ? 'page' : null}
           className="nav-link"
+          aria-label="Section About"
+          aria-current={currentPage === '#about' ? 'page' : null}
         >
           about
         </a>
         <a
           href="#benefits"
-          aria-current={currentPage === '#benefits' ? 'page' : null}
           className="nav-link"
+          aria-label="Section Benefits"
+          aria-current={currentPage === '#benefits' ? 'page' : null}
         >
           benefits
         </a>
         <a
-          href="#price"
-          aria-current={currentPage === '#price' ? 'page' : null}
+          href="#sec-price"
           className="nav-link"
+          aria-label="Section Prices"
+          aria-current={currentPage === '#price' ? 'page' : null}
         >
           Price
         </a>
-        <a href="/schedules" className="nav-link">
+        <a
+          href="/schedules"
+          className="nav-link"
+          aria-label="Schedules page"
+          aria-current={currentPage === '/schedules' ? 'page' : null}
+        >
           SCHEDULES
         </a>
       </nav>
-      <a href="/sign-up" className="nav-link right" aria-label="Sign-up">
+      <a
+        href="/sign-up"
+        className="nav-link right"
+        aria-label="Sign-up page"
+        aria-current={currentPage === '/sign-up' ? 'page' : null}
+      >
         SIGN UP
       </a>
-      <button class="menu-icon" aria-label="Menu sandwich" onClick={toggleMenu}>
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
+      <button
+        className="menu-icon"
+        aria-label="Menu sandwich"
+        onClick={toggleMenu}
+      >
+        <span className="line"></span>
+        <span className="line"></span>
+        <span className="line"></span>
       </button>
     </header>
   )
