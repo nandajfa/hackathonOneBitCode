@@ -1,6 +1,5 @@
 import React from 'react'
 import './style.css'
-import meetaway from '../../assets/logo2.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faInstagram,
@@ -10,10 +9,10 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="footer" aria-label="Rodapé da página">
+    <footer className="footer" aria-label="Page footer">
       <div className="container-footer">
-        <img src={meetaway} alt="Logo" className="footer-logo" />
-        <div className="social-icons" aria-label="Redes Sociais">
+        <div class="logo-text f-logo-text">meetaway</div>
+        <div className="social-icons" aria-label="Social media">
           <a
             href="https://www.instagram.com/"
             target="_blank"
@@ -44,7 +43,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="rights" role="contentinfo" aria-label="Direitos reservados">
-        Todos os direitos reservados ©{new Date().getFullYear()}
+        All rights reserved ©{new Date().getFullYear()}
       </p>
     </footer>
   )
