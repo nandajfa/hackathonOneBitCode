@@ -1,53 +1,13 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
-.login-box {
-  width: 400px;
-  padding: 40px;
-  background: #fff;
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px #457b9d;
-  border-radius: 10px;
-}
-
-.login-box h2 {
-  margin: 0 0 30px;
-  padding: 0;
-  color: #e63946;
-  text-align: center;
-}
-
-.login-box .user-box {
-  position: relative;
-}
-
-.login-box .user-box input {
-  width: 100%;
-  padding: 10px 0;
-  font-size: 16px;
-  color: #457b9d;
-  margin-bottom: 30px;
-  border: none;
-  border-bottom: 1px solid #e63946;
-  outline: none;
-  background: transparent;
-}
-
-.login-box .user-box label {
-  padding: 10px 0;
-  font-size: 16px;
-  color: #e63946;
-}
-
 .error {
   font-size: 12px;
-  color: red;
   position: absolute;
   bottom: -5px;
   left: 0;
+}
+
+.link-signup {
+  text-decoration: none;
+  cursor: pointer;
+  color: #0ac278;
+  letter-spacing: 2px;
 }

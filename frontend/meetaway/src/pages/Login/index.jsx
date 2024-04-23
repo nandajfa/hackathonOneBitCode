@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import Footer from '../../components/Footer'
-import Header from '../../components/Header'
 import { login, isAuthenticated } from '../../services/auth'
 import { Navigate } from 'react-router-dom'
 import FailureNotification from '../../components/Notification/FailureNotification'
@@ -8,7 +6,8 @@ import SuccessNotification from '../../components/Notification/FailureNotificati
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
 import './style.css'
 
 const Login = () => {
@@ -60,58 +59,82 @@ const Login = () => {
     <Navigate to="/menu" replace />
   ) : (
     <>
-      <Header />
       <div className="container">
+        <div className="text-container">
+          <h1 className="text-login">
+            Welcome back <br /> to <strong>Meetaway</strong>
+          </h1>
+          <a href="/" className="icon-container">
+            <FontAwesomeIcon icon={faHouse} className="social-icon" />
+          </a>
+        </div>
         <div className="login-box">
-          <h2>Login</h2>
-          <Formik
-            initialValues={{ email: '', password: '' }}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
-            {({ isSubmitting }) => (
-              <Form>
-                <div className="user-box">
-                  <label htmlFor='email'>Email</label>
-                  <Field type="email"
-              name="email"
-              id="email"
-              aria-describedby="email-error"
-              aria-invalid={isSubmitting}
-              aria-required="true" />
-                  <ErrorMessage
-                    name="email"
-                    component="span"
-                    className="error"
-                    id="email-error"
-                  />
-                </div>
-                <div className="user-box">
-                  <label htmlFor="password">Senha</label>
-                  <Field type="password" name="password" id="password"  aria-describedby="password-error"
-              aria-invalid={isSubmitting}
-              aria-required="true"/>
-                  <ErrorMessage
-                    name="password"
-                    component="span"
-                    className="error"
-                    id="password-error"
-                  />
-                </div>
-                <button type="submit" disabled={isSubmitting}          aria-busy={isSubmitting}
-                  aria-label={isSubmitting ? 'Enviando...' : 'Logar'}>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  {isSubmitting ? 'Enviando...' : 'Logar'}
-                </button>
-              </Form>
-            )}
-          </Formik>
+          <div className="form">
+            <h2 className="login-title">Login</h2>
+            <Formik
+              initialValues={{ email: '', password: '' }}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {({ isSubmitting }) => (
+                <Form>
+                  <div className="user-box">
+                    <label htmlFor="email">Email</label>
+                    <Field
+                      type="email"
+                      name="email"
+                      id="email"
+                      aria-describedby="email-error"
+                      aria-invalid={isSubmitting}
+                      aria-required="true"
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="span"
+                      className="error"
+                      id="email-error"
+                    />
+                  </div>
+                  <div className="user-box">
+                    <label htmlFor="password">Senha</label>
+                    <Field
+                      type="password"
+                      name="password"
+                      id="password"
+                      aria-describedby="password-error"
+                      aria-invalid={isSubmitting}
+                      aria-required="true"
+                    />
+                    <ErrorMessage
+                      name="password"
+                      component="span"
+                      className="error"
+                      id="password-error"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    aria-busy={isSubmitting}
+                    aria-label={isSubmitting ? 'Logging In...' : 'Login'}
+                  >
+                    {isSubmitting ? 'Logging In...' : 'Login'}
+                  </button>
+                </Form>
+              )}
+            </Formik>
+            <p className="p-login">
+              Don't have an account?{' '}
+              <a className="link-signup" href="/sign-up">
+                Sign Up
+              </a>
+            </p>
+            <a href="/" className="icon-container">
+              <FontAwesomeIcon icon={faHouse} className="social-icon-form" />
+            </a>
+          </div>
         </div>
       </div>
-      <Footer />
     </>
   )
 }
