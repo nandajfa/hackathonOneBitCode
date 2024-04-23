@@ -54,7 +54,7 @@ const Header = () => {
           Price
         </a>
         <a
-          href="/schedules"
+          href="/schedule"
           className="nav-link"
           aria-label="Schedules page"
           aria-current={currentPage === '/schedules' ? 'page' : null}
