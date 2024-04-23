@@ -28,11 +28,11 @@ const Home = () => {
                 GET STARTED NOW
               </a>
               <a
-                href="#learn-more"
+                href="/login"
                 class="outline-button"
                 aria-label="Learn More Button"
               >
-                LEARN MORE
+                SIGN IN
               </a>
             </div>
           </div>

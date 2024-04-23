@@ -86,11 +86,11 @@
 .button:hover {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.11),
     inset 0 -34px 50px -25px rgba(0, 0, 0, 0),
-    inset 0 1px 0 1px rgba(0, 0, 0, 0.15);
+    inset 0 1px 0 1px rgba(0, 0, 0, 0.5);
 }
 
 .button:active {
-  background-color: #00c274;
+  background-color: #00c290;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.26), inset 0 2px 5px rgba(0, 0, 0, 0),
     inset 0 2px 2px 1px rgba(0, 0, 0, 0.15);
 }
