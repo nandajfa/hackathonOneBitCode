@@ -6,7 +6,7 @@ const Price = () => {
     <section id="sec-price" className="sec-price">
       <div className="container-price">
         <div className="title-price">
-          <h2>Our pricing is simple</h2>
+          <h2 className="pricing">Our pricing is simple</h2>
           <p>No commitments. No credit cards required. Start now!</p>
         </div>
         <div className="pricing-row w-row">
