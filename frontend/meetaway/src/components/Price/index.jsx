@@ -1,4 +1,6 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
 import './style.css'
 
 const Price = () => {
@@ -82,6 +84,9 @@ const Price = () => {
         </div>
         <p className="support">Need help? Reach us at contact@meetaway.com</p>
       </div>
+      <a href="#main" class="arrow-up">
+        <FontAwesomeIcon icon={faArrowUp} className="social-icon-p" />
+      </a>
     </section>
   )
 }

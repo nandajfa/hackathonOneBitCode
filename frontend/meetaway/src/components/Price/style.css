@@ -106,6 +106,22 @@
   text-align: right;
 }
 
+.social-icon-p {
+  padding: 10px;
+  margin: 0 1vw;
+  font-size: 2rem;
+  color: #f1faee;
+  transition: color 0.3s ease;
+}
+
+.social-icon-p:hover {
+  color: #5f6266;
+}
+
+.arrow-up {
+  margin-top: 75vh;
+}
+
 /* Media Queries for Responsiveness */
 @media only screen and (max-width: 768px) {
   .pricing-row {
