@@ -82,11 +82,13 @@ const Price = () => {
             </div>
           </div>
         </div>
-        <p className="support">Need help? Reach us at contact@meetaway.com</p>
+        <p className="support">
+          Need help? Reach us at contact@meetaway.com
+          <a href="#main" class="arrow-up">
+            <FontAwesomeIcon icon={faArrowUp} className="social-icon-p" />
+          </a>
+        </p>
       </div>
-      <a href="#main" class="arrow-up">
-        <FontAwesomeIcon icon={faArrowUp} className="social-icon-p" />
-      </a>
     </section>
   )
 }
