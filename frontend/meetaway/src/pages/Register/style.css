@@ -121,7 +121,7 @@ strong {
   padding: 15px 0;
 }
 
-button {
+.btn-sign {
   position: relative;
   letter-spacing: 0.5px;
   background-color: #0ac278;
@@ -137,7 +137,7 @@ button {
   border-radius: 2px;
 }
 
-button:hover {
+.btn-sign:hover {
   background-color: #1ed28f;
   color: white;
 }
