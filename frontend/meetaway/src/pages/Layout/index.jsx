@@ -8,6 +8,7 @@ import SuccessNotification from '../../components/Notification/SuccessNotificati
 import { PoweroffOutlined } from '@ant-design/icons'
 import { logout } from '../../services/auth'
 import { useNavigate } from 'react-router-dom'
+import NewService from '../../components/NewService'
 import {
   faAngleLeft,
   faHouse,
@@ -20,10 +21,15 @@ import {
 
 function Dashboard() {
   const navigate = useNavigate()
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(true)
   const [selectedItem, setSelectedItem] = useState(null)
 
   useEffect(() => {
+    const storedSelectedItem = localStorage.getItem('selectedItem')
+    if (storedSelectedItem) {
+      setSelectedItem(storedSelectedItem)
+    }
+
     if (isTokenExpired()) {
       FailureNotification({
         message: 'Sessão encerrada',
@@ -61,6 +67,7 @@ function Dashboard() {
 
   const handleItemClick = item => {
     setSelectedItem(item)
+    localStorage.setItem('selectedItem', item)
   }
 
   return (
@@ -110,7 +117,7 @@ function Dashboard() {
       </div>
       <div className="content">
         <div className="page-content">
-          {selectedItem === 'New' && <p>Conteúdo da Página New</p>}
+          {selectedItem === 'New' && <NewService />}
           {selectedItem === 'Home' && <p>Conteúdo da Página Home</p>}
           {selectedItem === 'About' && <p>Conteúdo da Página About</p>}
           {selectedItem === 'Contact' && <p>Conteúdo da Página Contact</p>}

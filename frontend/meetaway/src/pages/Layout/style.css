@@ -10,6 +10,7 @@
   transition: transform 0.3s ease;
   overflow-y: auto;
   position: relative;
+  border-right: 1px solid #5f6266;
 }
 
 .sidebar.open {
@@ -98,7 +99,9 @@
 
 .content {
   flex-grow: 1;
+  height: 100%;
   padding: 20px;
+  background-color: #333;
 }
 
 .page-content {
