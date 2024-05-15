@@ -31,20 +31,27 @@ const Register = () => {
         values
       )
 
-      SuccessNotification({
-        message: 'Registrado com sucesso',
-        description: 'Você será redirecionado para a página de login.'
-      })
-      setTimeout(() => {
-        if (response.status === 201) {
-          window.location.href = '/login'
-        }
-      }, 3000)
+      if (response.data.message === 'success') {
+        SuccessNotification({
+          message: 'Registrado com sucesso',
+          description: 'Você será redirecionado para a página de login.'
+        })
+        setTimeout(() => {
+          if (response.status === 201) {
+            window.location.href = '/login'
+          }
+        }, 3000)
+      } else {
+        FailureNotification({
+          message: 'Erro ao registrar',
+          description: 'Email já está em uso'
+        })
+      }
       setSubmitting(false)
     } catch (error) {
       FailureNotification({
         message: 'Erro ao registrar',
-        description: error.response.data.error
+        description: 'Erro interno do servidor'
       })
       setSubmitting(false)
     }

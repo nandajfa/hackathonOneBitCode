@@ -61,6 +61,12 @@ strong {
   align-items: center;
 }
 
+.login-title {
+  color: #d7d9de;
+  text-align: left;
+  margin-bottom: 50px;
+}
+
 .form {
   width: 100%;
   max-width: 500px;
@@ -69,28 +75,6 @@ strong {
   background-color: #5f6266;
   border-radius: 2px;
   background-color: rgba(255, 255, 255, 0.2);
-}
-
-.login-title {
-  color: #d7d9de;
-  text-align: left;
-  margin-bottom: 50px;
-}
-
-.p-login {
-  padding: 20px 0;
-  color: #d7d9de;
-}
-
-.link-signin {
-  text-decoration: none;
-  cursor: pointer;
-  color: #0ac278;
-  letter-spacing: 2px;
-}
-
-.link-signin:hover {
-  color: #1ed28f;
 }
 
 .login-box .user-box {
@@ -110,6 +94,15 @@ strong {
   font-weight: 700;
 }
 
+.login-box .user-box input:-webkit-autofill {
+  /* Força a cor do texto */
+  -webkit-text-fill-color: #d7d9de !important;
+  /* Força a cor de fundo */
+  -webkit-box-shadow: 0 0 0px 1000px #5f6266 inset !important;
+  /* Força a borda */
+  border-color: #d7d9de !important;
+}
+
 .login-box .user-box label {
   font-size: 16px;
   color: #d7d9de;
@@ -119,6 +112,22 @@ strong {
   font-size: 12px;
   color: #dcdcdc;
   padding: 15px 0;
+}
+
+.p-login {
+  padding: 20px 0;
+  color: #d7d9de;
+}
+
+.link-signin {
+  text-decoration: none;
+  cursor: pointer;
+  color: #0ac278;
+  letter-spacing: 2px;
+}
+
+.link-signin:hover {
+  color: #1ed28f;
 }
 
 .btn-sign {
@@ -140,11 +149,6 @@ strong {
 .btn-sign:hover {
   background-color: #1ed28f;
   color: white;
-}
-
-.login-box button {
-  position: relative;
-  overflow: hidden;
 }
 
 @media only screen and (max-width: 912px) {
