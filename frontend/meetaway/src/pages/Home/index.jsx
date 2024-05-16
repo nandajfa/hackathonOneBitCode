@@ -23,13 +23,13 @@ const Home = () => {
             <p className="subtitle" aria-label="Subtitle Description">
               Meetaway: Elevating Scheduling to New Heights!
             </p>
-            <div class="button-container" aria-label="Button Actions">
+            <div className="button-container" aria-label="Button Actions">
               <a href="/sign-up" class="button" aria-label="Sign Up Button">
                 GET STARTED NOW
               </a>
               <a
                 href="/login"
-                class="outline-button"
+                className="outline-button"
                 aria-label="Learn More Button"
               >
                 SIGN IN

@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <header className="header" aria-label="Navigation header">
-      <div class="logo-text" aria-label="Logo text meetaway">
+      <div className="logo-text" aria-label="Logo text meetaway">
         meetaway
       </div>
 
