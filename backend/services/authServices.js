@@ -1,14 +1,18 @@
 const { createUser, findUserByEmail } = require('../db/supabase')
-const { generateToken, generateRandomString, hashPassword, comparePasswords } = require('../utils/authUtils')
+const {
+  generateToken,
+  generateRandomString,
+  hashPassword,
+  comparePasswords
+} = require('../utils/authUtils')
 
 exports.registerUser = async (name, email, password) => {
   try {
-    const existingUser = await findUserByEmail(email);
+    const existingUser = await findUserByEmail(email)
     if (existingUser) {
       throw new Error('O email já está em uso.')
     }
-
-    const hashedPassword = await hashPassword(password);
+    const hashedPassword = await hashPassword(password)
 
     await createUser({ name, email, password: hashedPassword })
 
@@ -17,7 +21,7 @@ exports.registerUser = async (name, email, password) => {
     console.error('Erro ao registrar usuário:', error.message)
     throw new Error('Erro interno do servidor')
   }
-};
+}
 
 exports.loginUser = async (email, password) => {
   try {
@@ -26,7 +30,7 @@ exports.loginUser = async (email, password) => {
       throw new Error('Credenciais inválidas')
     }
 
-    const passwordMatch = await comparePasswords(password, user.password);
+    const passwordMatch = await comparePasswords(password, user.password)
     if (!passwordMatch) {
       throw new Error('Credenciais inválidas')
     }
@@ -39,4 +43,4 @@ exports.loginUser = async (email, password) => {
     console.error('Erro ao fazer login:', error.message)
     throw new Error('Usuário não encontrado')
   }
-};
+}
