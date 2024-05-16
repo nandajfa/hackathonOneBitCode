@@ -23,7 +23,13 @@ const findUserByEmail = async email => {
       .select()
       .eq('email', email)
       .single()
-    if (error) throw erro
+
+    if (error && error.code === 'PGRST116') {
+      return null
+    } else if (error) {
+      throw error
+    }
+
     return data
   } catch (error) {
     throw error
