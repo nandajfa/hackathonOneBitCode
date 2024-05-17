@@ -36,6 +36,28 @@ const findUserByEmail = async email => {
   }
 }
 
+const findUserById = async userId => {
+  try {
+    const { data, error } = await supabase
+      .from('users')
+      .select('name, email')
+      .eq('id', userId)
+      .single()
+
+    if (error) {
+      if (error.message === 'Row not found') {
+        return null
+      } else {
+        throw new Error('Erro ao buscar usuário')
+      }
+    }
+
+    return data || null
+  } catch (error) {
+    throw new Error('Erro ao buscar usuário')
+  }
+}
+
 const getAllServices = async () => {
   try {
     const { data, error } = await supabase.from('services').select('*')
@@ -84,6 +106,7 @@ module.exports = {
   supabase,
   createUser,
   findUserByEmail,
+  findUserById,
   createService,
   getAllServices,
   updateService,
