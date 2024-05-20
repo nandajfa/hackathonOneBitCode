@@ -20,7 +20,7 @@ exports.loginUserController = async (req, res, next) => {
   try {
     const { email, password } = req.body
     const result = await loginUser(req, res, email, password)
-    res.json(result)
+    res.status(200).json(result)
   } catch (error) {
     console.error('Erro ao fazer login:', error.message)
     next(error)
@@ -30,7 +30,7 @@ exports.loginUserController = async (req, res, next) => {
 exports.dataUserController = async (req, res, next) => {
   try {
     const result = await dataUser(req, res)
-    res.json(result)
+    res.status(200).json(result)
   } catch (error) {
     console.error('Erro ao acessar perfil:', error.message)
     next(error)
@@ -40,7 +40,7 @@ exports.dataUserController = async (req, res, next) => {
 exports.logoutController = async (req, res, next) => {
   try {
     const result = await logoutUser(req, res)
-    res.json(result)
+    res.status(200).json(result)
   } catch (error) {
     console.error('Erro ao fazer logout:', error.message)
     next(error)
