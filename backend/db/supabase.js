@@ -84,6 +84,7 @@ const updateService = async (id, serviceData) => {
       .from('services')
       .update(serviceData)
       .match({ id })
+      .select()
 
     if (error) throw error
     return data
