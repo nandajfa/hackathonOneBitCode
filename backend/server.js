@@ -1,19 +1,24 @@
-const express = require('express');
-const corsMiddleware = require('./middlewares/corsMiddleware');
-const errorHandler = require('./middlewares/errorMiddleware');
-const Routes = require('./routes/Routes');
-require('dotenv').config();
+const express = require('express')
+const corsMiddleware = require('./middlewares/corsMiddleware')
+const errorHandler = require('./middlewares/errorMiddleware')
+const authRoutes = require('./routes/authRoutes')
+const serviceRoutes = require('./routes/serviceRoutes')
 
-const app = express();
-const PORT = process.env.PORT || 3003;
+require('dotenv').config()
+const swaggerDocs = require('./swagger')
 
-app.use(express.json());
-app.use(corsMiddleware);
-app.use(errorHandler);
+const app = express()
+const PORT = process.env.PORT || 3003
 
-app.use('/auth', Routes);
-app.use('/services', Routes);
+app.use(express.json())
+app.use(corsMiddleware)
+app.use(errorHandler)
+
+app.use('/auth', authRoutes)
+app.use('/services', serviceRoutes)
+
+swaggerDocs(app)
 
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
+  console.log(`Servidor rodando na porta ${PORT}`)
+})
