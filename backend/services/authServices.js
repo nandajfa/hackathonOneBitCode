@@ -5,7 +5,6 @@ const {
   hashPassword,
   comparePasswords
 } = require('../utils/authUtils')
-// const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
 const secretManager = require('../utils/secretManager')
 
@@ -43,10 +42,10 @@ exports.loginUser = async (req, res, email, password) => {
     const token = await generateToken({ userId: user.id }, secret, '24h')
 
     if (!token) {
-      return 'Fail'
+      return { message: 'Fail' }
     } else {
       res.cookie('token', token, { httpOnly: true, secure: true })
-      return 'Success'
+      return { message: 'Success', token }
     }
   } catch (error) {
     console.error('Erro ao fazer login:', error.message)
@@ -56,7 +55,6 @@ exports.loginUser = async (req, res, email, password) => {
 
 exports.dataUser = async (req, res) => {
   const token = req.cookies.token
-
   if (token) {
     try {
       const secret = await secretManager.getSecret()
