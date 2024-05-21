@@ -1,12 +1,10 @@
 const { createUser, findUserByEmail, findUserById } = require('../db/supabase')
 const {
   generateToken,
-  generateRandomString,
   hashPassword,
   comparePasswords
 } = require('../utils/authUtils')
 const jwt = require('jsonwebtoken')
-const secretManager = require('../utils/secretManager')
 
 exports.registerUser = async (name, email, password) => {
   try {
@@ -37,15 +35,22 @@ exports.loginUser = async (req, res, email, password) => {
       throw new Error('Credenciais inválidas')
     }
 
-    const secret = generateRandomString(32)
-    await secretManager.setSecret(secret)
+    const secret = process.env.JWT_SECRET
+
     const token = await generateToken({ userId: user.id }, secret, '24h')
 
     if (!token) {
       return { message: 'Fail' }
     } else {
-      res.cookie('token', token, { httpOnly: true, secure: true })
-      return { message: 'Success', token }
+      res.cookie('token', token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'Strict'
+      })
+      return {
+        message: 'Success',
+        user: { name: user.name, email: user.email }
+      }
     }
   } catch (error) {
     console.error('Erro ao fazer login:', error.message)
@@ -57,7 +62,7 @@ exports.dataUser = async (req, res) => {
   const token = req.cookies.token
   if (token) {
     try {
-      const secret = await secretManager.getSecret()
+      const secret = process.env.JWT_SECRET
       const decodedToken = jwt.verify(token, secret)
 
       let data = await findUserById(decodedToken.userId)
@@ -73,10 +78,31 @@ exports.dataUser = async (req, res) => {
 }
 
 exports.logoutUser = (req, res) => {
-  res.cookie('token', '', {
-    expires: new Date(0),
-    httpOnly: true,
-    secure: true
-  })
-  res.send('Token de autenticação removido com sucesso.')
+  res.clearCookie('token')
+  return 'Token de autenticação removido com sucesso.'
+}
+
+exports.checkAuth = async req => {
+  const token = req.cookies.token
+
+  if (!token) {
+    return { authenticated: false }
+  }
+
+  try {
+    const secret = process.env.JWT_SECRET
+    return new Promise((resolve, reject) => {
+      jwt.verify(token, secret, (err, decoded) => {
+        if (err) {
+          console.error('Erro ao verificar o token:', err)
+          resolve({ authenticated: false })
+        } else {
+          resolve({ authenticated: true })
+        }
+      })
+    })
+  } catch (error) {
+    console.error('Erro ao obter o segredo:', error)
+    return { authenticated: false }
+  }
 }
