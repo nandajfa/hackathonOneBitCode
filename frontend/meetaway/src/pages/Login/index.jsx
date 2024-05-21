@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { login, isAuthenticated } from '../../services/auth'
+// import { login, isAuthenticated } from '../../services/auth'
 import { Navigate } from 'react-router-dom'
 import FailureNotification from '../../components/Notification/FailureNotification'
 import SuccessNotification from '../../components/Notification/SuccessNotification'
@@ -8,6 +8,7 @@ import * as Yup from 'yup'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import { setUser } from '../../services/auth'
 import './style.css'
 
 const Login = () => {
@@ -22,23 +23,38 @@ const Login = () => {
     try {
       const response = await axios.post(
         'http://localhost:3003/auth/login',
-        values
+        values,
+        { withCredentials: true }
       )
-      if (response.data.token) {
-        login(response.data.token)
-      }
-      if (isAuthenticated()) {
+      // if (response.data.token) {
+      //   login(response.data.token)
+      // }
+      // if (isAuthenticated()) {
+      //   SuccessNotification({
+      //     message: 'Logado com sucesso',
+      //     description: ''
+      //   })
+      //   setRedirectHome(true)
+      // } else {
+      //   FailureNotification({
+      //     message: 'Usuário não está autenticado',
+      //     description: 'Tente novamente mais tarde.'
+      //   })
+      // }
+      if (response.data.message === 'Fail') {
+        FailureNotification({
+          message: 'Falha ao fazer login',
+          description: 'Usuário não autenticado.'
+        })
+      } else if (response.data.message === 'Success') {
         SuccessNotification({
           message: 'Logado com sucesso',
           description: ''
         })
+        setUser(response.data.user)
         setRedirectHome(true)
-      } else {
-        FailureNotification({
-          message: 'Usuário não está autenticado',
-          description: 'Tente novamente mais tarde.'
-        })
       }
+
       setSubmitting(false)
     } catch (error) {
       if (error.response && error.response.status === 401) {
