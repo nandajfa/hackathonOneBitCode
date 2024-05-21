@@ -4,11 +4,10 @@ const {
   registerUserController,
   loginUserController,
   dataUserController,
-  logoutController
+  logoutController,
+  checkAuthController
 } = require('../controllers/authController')
 const authenticateToken = require('../middlewares/authMiddleware')
-const cookieParser = require('cookie-parser')
-router.use(cookieParser())
 
 /**
  * @swagger
@@ -106,5 +105,19 @@ router.get('/dataUser', authenticateToken, dataUserController)
  *         description: Não autorizado
  */
 router.get('/logout', logoutController)
+
+/**
+ * @swagger
+ * /auth/check-auth:
+ *   get:
+ *     summary: Verifica se o usuário está autenticado
+ *     tags: [Autenticação]
+ *     responses:
+ *       200:
+ *         description: Usuário autenticado
+ *       401:
+ *         description: Não autorizado
+ */
+router.get('/check-auth', checkAuthController)
 
 module.exports = router
