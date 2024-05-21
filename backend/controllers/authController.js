@@ -2,7 +2,8 @@ const {
   registerUser,
   loginUser,
   dataUser,
-  logoutUser
+  logoutUser,
+  checkAuth
 } = require('../services/authServices')
 
 exports.registerUserController = async (req, res, next) => {
@@ -43,6 +44,16 @@ exports.logoutController = async (req, res, next) => {
     res.status(200).json(result)
   } catch (error) {
     console.error('Erro ao fazer logout:', error.message)
+    next(error)
+  }
+}
+
+exports.checkAuthController = async (req, res, next) => {
+  try {
+    const result = await checkAuth(req)
+    res.status(200).json(result)
+  } catch (error) {
+    console.error('Erro ao verificar autenticação:', error.message)
     next(error)
   }
 }
