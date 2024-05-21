@@ -1,21 +1,29 @@
-export const isAuthenticated = () => {
-  return localStorage.getItem('authToken') !== null
+import axios from 'axios'
+
+export const isAuthenticated = async () => {
+  try {
+    const response = await axios.get('http://localhost:3003/auth/check-auth', {
+      withCredentials: true
+    })
+    return response.data.authenticated
+  } catch (error) {
+    console.error('Erro ao verificar autenticação:', error)
+    return false
+  }
 }
 
-// export const isAuthenticated = () => {
-//   const token = document.cookie
-//     .split('; ')
-//     .find(row => row.startsWith('token='))
-
-//   return token !== undefined
-// }
-
-export const login = token => {
-  // Armazena o token de autenticação no localStorage
-  localStorage.setItem('authToken', token)
+export const getUser = () => {
+  const user = localStorage.getItem('user')
+  return user ? JSON.parse(user) : null
 }
 
-// Função para fazer logout
-export const logout = () => {
-  localStorage.removeItem('authToken')
+export const setUser = user => {
+  localStorage.setItem('user', JSON.stringify(user))
+}
+
+export const logout = async () => {
+  await axios.get('http://localhost:3003/auth/logout', {
+    withCredentials: true
+  })
+  localStorage.removeItem('user')
 }
