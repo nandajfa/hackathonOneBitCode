@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react'
 import './style.css'
 import { Modal } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { isTokenExpired } from '../../utils/jwt-decode'
 import FailureNotification from '../../components/Notification/FailureNotification'
 import SuccessNotification from '../../components/Notification/SuccessNotification'
 import { PoweroffOutlined } from '@ant-design/icons'
-import { logout } from '../../services/auth'
+import { logout, isAuthenticated } from '../../services/auth'
 import { useNavigate } from 'react-router-dom'
 import NewService from '../../components/NewService'
 import {
@@ -18,11 +17,13 @@ import {
   faPlus,
   faAngleRight
 } from '@fortawesome/free-solid-svg-icons'
+import { getUser } from '../../services/auth'
 
 function Dashboard() {
   const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(true)
   const [selectedItem, setSelectedItem] = useState(null)
+  const [nameUser, setNameUser] = useState('')
 
   useEffect(() => {
     const storedSelectedItem = localStorage.getItem('selectedItem')
@@ -30,13 +31,23 @@ function Dashboard() {
       setSelectedItem(storedSelectedItem)
     }
 
-    if (isTokenExpired()) {
-      FailureNotification({
-        message: 'Sessão encerrada',
-        description: 'Por favor, faça login novamente.'
-      })
-      logout()
+    const checkAuth = async () => {
+      try {
+        const response = isAuthenticated()
+        if (!response) {
+          throw new Error('Não autenticado')
+        }
+      } catch (error) {
+        FailureNotification({
+          message: 'Sessão encerrada',
+          description: 'Por favor, faça login novamente.'
+        })
+        logout()
+      }
     }
+    checkAuth()
+    const user = getUser()
+    setNameUser(user.name)
   }, [])
 
   const handleLogout = async () => {
@@ -118,7 +129,9 @@ function Dashboard() {
       <div className="content">
         <div className="page-content">
           {selectedItem === 'New' && <NewService />}
-          {selectedItem === 'Home' && <p>Conteúdo da Página Home</p>}
+          {selectedItem === 'Home' && (
+            <p>{nameUser} - Conteúdo da Página Home</p>
+          )}
           {selectedItem === 'About' && <p>Conteúdo da Página About</p>}
           {selectedItem === 'Contact' && <p>Conteúdo da Página Contact</p>}
         </div>
