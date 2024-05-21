@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer className="footer" aria-label="Page footer">
       <div className="container-footer">
-        <div class="logo-text f-logo-text">meetaway</div>
+        <div className="logo-text f-logo-text">meetaway</div>
         <div className="social-icons" aria-label="Social media">
           <a
             href="https://www.instagram.com/"

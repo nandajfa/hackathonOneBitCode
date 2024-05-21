@@ -24,7 +24,7 @@ const Home = () => {
               Meetaway: Elevating Scheduling to New Heights!
             </p>
             <div className="button-container" aria-label="Button Actions">
-              <a href="/sign-up" class="button" aria-label="Sign Up Button">
+              <a href="/sign-up" className="button" aria-label="Sign Up Button">
                 GET STARTED NOW
               </a>
               <a

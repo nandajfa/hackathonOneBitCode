@@ -84,7 +84,7 @@ const Price = () => {
         </div>
         <p className="support">
           Need help? Reach us at contact@meetaway.com
-          <a href="#main" class="arrow-up">
+          <a href="#main" className="arrow-up">
             <FontAwesomeIcon icon={faArrowUp} className="social-icon-p" />
           </a>
         </p>
