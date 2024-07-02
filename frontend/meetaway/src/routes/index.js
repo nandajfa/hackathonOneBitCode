@@ -4,7 +4,8 @@ import Home from '../pages/Home'
 import Register from '../pages/Register'
 import Schedule from '../pages/Schedule'
 import { PrivateRoute } from './privateRoute'
-import Dashboard from '../components/layout'
+import Dashboard from '../pages/Layout'
+import NewService from '../components/NewService'
 // import ServiceForm from '../components/servicesForm'
 
 const AppRoutes = () => {
@@ -15,6 +16,10 @@ const AppRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Register />} />
         <Route path="/schedule" element={<Schedule />} />
+
+        <Route path="/menu" element={<Dashboard />} />
+        <Route path="/new" element={<NewService />} />
+
         <Route path="*" element={<Login />} />
         <Route
           path="/menu"

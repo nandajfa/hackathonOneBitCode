@@ -8,6 +8,7 @@ import { PoweroffOutlined } from '@ant-design/icons'
 import { logout, isAuthenticated } from '../../services/auth'
 import { useNavigate } from 'react-router-dom'
 import NewService from '../../components/NewService'
+import HomeMenu from '../../components/HomeMenu'
 import {
   faAngleLeft,
   faHouse,
@@ -129,9 +130,7 @@ function Dashboard() {
       <div className="content">
         <div className="page-content">
           {selectedItem === 'New' && <NewService />}
-          {selectedItem === 'Home' && (
-            <p>{nameUser} - Conteúdo da Página Home</p>
-          )}
+          {selectedItem === 'Home' && <HomeMenu nameUser />}
           {selectedItem === 'About' && <p>Conteúdo da Página About</p>}
           {selectedItem === 'Contact' && <p>Conteúdo da Página Contact</p>}
         </div>
